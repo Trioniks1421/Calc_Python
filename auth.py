@@ -1,8 +1,6 @@
 import os
 import json
 
-import hashlib
-import hmac
 
 
 def check_pass(pass1, pass2):
@@ -41,7 +39,7 @@ def write_to_db(**new_user):
     file = os.path.join('users.json')
 
     def check_user_in_db(login):
-        nonlocal file
+        #nonlocal file              ###Ошибка
         with open(file, 'r') as users:
             list_users = json.load(users)
             for user in list_users:

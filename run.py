@@ -1,6 +1,8 @@
 from auth import register
 from Login_ac import valid_user_in_db
-from Calculator import Guest_calc, Auth_calc
+from Calculator1 import Guest_calc, Auth_calc
+import json
+import os
 
 print("Please , login or register for the full functionality of the calculator\nLogin or register press (y)\n"
       "Login as guest press (n)")
@@ -36,8 +38,15 @@ try:
     elif in_elem == "n" and guest_bool == False:
         Guest_calc()
     else:
-        raise ValueError("n OR n !!!!")
+        raise ValueError("y OR n !!!!")
     if guest_bool == True:
         Auth_calc()
 except ValueError as a:
     print(a)
+read_bool = input("View transaction history (y/n)")
+file = os.path.join('operation.json')
+if read_bool == "y":
+    with open(file, "r") as f:
+        read_data_operations = json.load(f)
+else:
+    pass
